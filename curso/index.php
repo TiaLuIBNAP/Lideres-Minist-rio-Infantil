@@ -4,7 +4,7 @@ require "config/conexao.php";
 
 // Se já está logado, vai direto para o painel
 if (isset($_SESSION['usuario_id'])) {
-    header("Location: paginas/painel.php");
+    header("Location: paginas/boas_vindas.php");
     exit;
 }
     $erro = "";
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usuario['trocar_senha']) {
         header("Location: paginas/trocar_senha.php");
     } else {
-        header("Location: paginas/painel.php");
+        header("Location: paginas/boas_vindas.php");
     }
     exit;
 } else {

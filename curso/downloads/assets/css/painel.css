@@ -1,0 +1,59 @@
+/* ===== PAINEL DE MÓDULOS ===== (cole no FINAL do estilo.css) */
+.painel-titulo { margin: 0 0 20px; color: #e8590c; font-family: 'Baloo 2', 'Nunito', sans-serif; }
+.painel-aviso  { background: #fff3cd; border-left: 5px solid #f59f00; padding: 10px 14px; border-radius: 6px; }
+
+.grade-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.card-modulo {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .10);
+    transition: transform .2s, box-shadow .2s;
+}
+.card-modulo:not(.bloqueado):hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, .16); }
+
+.card-imagem { position: relative; aspect-ratio: 16 / 9; background: #ddd; }
+.card-imagem img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.card-rotulo {
+    position: absolute; top: 10px; right: 10px;
+    padding: 4px 12px; border-radius: 50px;
+    font-size: .8rem; font-weight: 700; color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+.andamento .card-rotulo { background: #1c7c8c; }
+.concluido .card-rotulo { background: #2b8a3e; }
+.bloqueado .card-rotulo { background: #6c757d; }
+
+.card-corpo { display: flex; flex-direction: column; flex: 1; padding: 18px; }
+.card-etiqueta { margin: 0 0 4px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #e8590c; }
+.card-titulo   { margin: 0 0 8px; font-size: 1.2rem; line-height: 1.25; color: #333; }
+.card-descricao{ flex: 1; margin: 0 0 16px; font-size: .95rem; line-height: 1.5; color: #555; }
+
+.card-botao {
+    display: block; text-align: center;
+    padding: 11px; border-radius: 50px;
+    background: #e8590c; color: #fff;
+    font-weight: 700; text-decoration: none;
+}
+.card-botao:hover { background: #c94a08; }
+.card-botao.desativado { background: #ced4da; color: #6c757d; cursor: not-allowed; }
+.card-botao.desativado:hover { background: #ced4da; }
+
+/* Módulo bloqueado: imagem apagada */
+.bloqueado .card-imagem img { filter: grayscale(1); opacity: .55; }
+.bloqueado .card-titulo { color: #868e96; }
+
+/* ===== RODAPÉ: progresso à esquerda, "Área do aluno" à direita ===== */
+.rodape { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.rodape-progresso { display: flex; align-items: center; gap: 10px; font-size: .85rem; }
+.barra { width: 180px; height: 10px; background: #dee2e6; border-radius: 10px; overflow: hidden; }
+.barra-preenchida { height: 100%; background: #2b8a3e; border-radius: 10px; transition: width .4s; }
+.rodape-area { font-size: .75rem; color: #adb5bd; }

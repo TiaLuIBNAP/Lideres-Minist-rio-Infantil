@@ -1,0 +1,135 @@
+:root {
+  --cor-fundo-1: #b1aea9; /* fundo claro */
+  --cor-fundo-2: #c5873f;
+  --cor-titulo: #090857; /* azul forte */
+  --cor-saudacao: #1c7c8c; /* azul-petróleo */
+  --cor-texto: #4a4a4a;
+  --cor-versiculo: #060f0d; /* verde */
+  --cor-impacto: #042c0f; /* ver escuro */
+  --cor-botao: #141635;
+}
+
+body.boas-vindas {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, var(--cor-fundo-1), var(--cor-fundo-2));
+  font-family: "Nunito", sans-serif;
+  color: var(--cor-texto);
+}
+
+/* Cartão central: logo à esquerda, texto à direita */
+.bv-cartao {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 1050px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.bv-logo {
+  flex: 0 0 38%;
+  text-align: center;
+}
+.bv-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bv-texto {
+  flex: 1;
+}
+
+.bv-saudacao {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-saudacao);
+}
+
+/* Fonte de destaque do título */
+.bv-titulo {
+  margin: 0 0 16px;
+  font-family: "Baloo 2", cursive;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--cor-titulo);
+}
+
+.bv-subtitulo {
+  margin: 0 0 24px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Versículo em destaque, com outra fonte (manuscrita) */
+.bv-versiculo {
+  margin: 0 0 20px;
+  padding: 16px 22px;
+  border-left: 6px solid var(--cor-versiculo);
+  background: #eefaf5;
+  border-radius: 0 12px 12px 0;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: var(--cor-versiculo);
+}
+.bv-versiculo cite {
+  display: block;
+  margin-top: 8px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.bv-impacto {
+  margin: 0 0 28px;
+  font-family: "Baloo 2", cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cor-impacto);
+}
+
+.bv-botao {
+  display: inline-block;
+  padding: 14px 38px;
+  background: var(--cor-botao);
+  color: #fff;
+  border-radius: 50px;
+  font-family: "Baloo 2", cursive;
+  font-size: 1.3rem;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(232, 89, 12, 0.35);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.bv-botao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(232, 89, 12, 0.45);
+}
+
+/* Celular: logo em cima, texto embaixo */
+@media (max-width: 800px) {
+  .bv-cartao {
+    flex-direction: column;
+    padding: 30px 22px;
+    gap: 24px;
+  }
+  .bv-logo {
+    flex: none;
+    max-width: 240px;
+  }
+  .bv-titulo {
+    font-size: 2rem;
+  }
+}

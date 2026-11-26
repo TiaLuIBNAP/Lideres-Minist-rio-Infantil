@@ -1,0 +1,1 @@
+A criação do Curso foi por VibeCode, fui montando o curso com ajuda do Claude, porém fui fazendo em partes para um melhor entendimento, correção e alteração. Criando um passo a passo para replicar a criação como Treinamento e aperfeiçoamento das linguagens utilizadas: Php,Js, Css e Sql (xampp).

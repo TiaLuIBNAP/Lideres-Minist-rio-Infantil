@@ -17,6 +17,10 @@ require __DIR__ . '/../includes/topo.php';
 
 <h1 class="painel-titulo">Módulos do curso</h1>
 
+<?php if (($_GET['concluido'] ?? '') === '1'): ?>
+    <p class="painel-ok">Módulo concluído! O próximo módulo foi liberado.</p>
+<?php endif; ?>
+
 <?php if (($_GET['erro'] ?? '') === 'bloqueado'): ?>
     <p class="painel-aviso">Esse módulo ainda está bloqueado. Conclua o módulo anterior para liberá-lo.</p>
 <?php endif; ?>

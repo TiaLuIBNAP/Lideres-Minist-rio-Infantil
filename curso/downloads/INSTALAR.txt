@@ -1,0 +1,28 @@
+MÓDULO 4 — CONTEÚDO, ATIVIDADES, AVALIAÇÃO E CONCLUSÃO (começando pela Introdução)
+
+ORDEM DE INSTALAÇÃO
+1) BANCO: phpMyAdmin > banco curso_treinamento > aba SQL > cole o conteúdo de sql/modulo4.sql > Executar.
+   (cria as tabelas respostas e avaliacoes_modulo, grava o texto da Introdução e as 5 questões)
+2) IMAGENS: copie assets/img/modulos/hero/ para curso/assets/img/modulos/hero/
+3) CSS: copie assets/css/modulo.css para curso/assets/css/
+        cole o conteúdo de assets/css/painel_extra.css no FINAL do seu estilo.css
+4) JS: copie assets/js/modulo.js para curso/assets/js/  (crie a pasta js se não existir)
+5) PHP:
+   includes/modulos.php          SUBSTITUI o atual (as funções antigas continuam; entraram 3 novas)
+   includes/topo_modulo.php      novo
+   includes/rodape_modulo.php    novo
+   paginas/modulo.php            SUBSTITUI a página temporária
+   paginas/atividades.php        novo
+   paginas/conferir.php          novo
+   paginas/avaliar.php           novo
+   paginas/concluir.php          novo
+   paginas/painel.php            SUBSTITUI (só ganhou a mensagem "Módulo concluído!")
+6) VÍDEO: no phpMyAdmin rode (com o código do seu vídeo):
+   UPDATE modulos SET video_url = 'https://www.youtube.com/watch?v=CODIGO' WHERE ordem = 1;
+   Sem link, a página mostra a caixa "O vídeo deste módulo será carregado aqui".
+7) config/config.php: troque NOME_CURSO por 'Preparando Líderes para o Ministério Infantil'
+   (esse texto aparece no centro da barra superior).
+
+TESTE
+Aluno novo > boas-vindas > painel > Iniciar módulo (Introdução) > estrelas > Ir para as atividades >
+responder e "Conferir resposta" nas 5 > Concluir módulo > painel com Módulo 1 liberado.

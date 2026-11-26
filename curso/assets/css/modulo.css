@@ -1,0 +1,234 @@
+/* =====================================================================
+   PÁGINAS DE CONTEÚDO E ATIVIDADES DO MÓDULO
+   Imagem do módulo ao fundo + "folha" branca subindo por cima dela.
+   ===================================================================== */
+:root {
+    --escuro: #0f1b2d;        /* barra superior e rodapé da folha */
+    --folha: #fbf8f2;         /* cor da folha */
+    --dourado: #f2b632;       /* botões principais */
+    --texto: #2d2a26;
+    --suave: #6b665e;
+    --certo: #2b8a3e;
+    --errado: #c92a2a;
+    --largura-folha: 860px;
+}
+
+* { box-sizing: border-box; }
+
+/* A imagem do módulo fica FIXA atrás; a folha rola por cima dela.
+   A imagem vem da variável --imagem, definida no topo_modulo.php */
+body.pagina-modulo {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    color: var(--texto);
+    background-color: var(--escuro);
+    background-image: linear-gradient(rgba(10, 20, 35, .30), rgba(10, 20, 35, .55)), var(--imagem);
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+/* ---------- BARRA SUPERIOR ---------- */
+.barra-topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;   /* logo | título | usuário */
+    align-items: center;
+    gap: 16px;
+    padding: 8px 28px;
+    background: rgba(15, 27, 45, .96);
+    color: #fff;
+    border-bottom: 3px solid var(--dourado);
+}
+.barra-logo img { height: 54px; width: auto; display: block; }
+.barra-titulo {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+}
+.barra-usuario { display: flex; align-items: center; justify-content: flex-end; gap: 14px; font-size: .95rem; }
+.btn-sair {
+    padding: 6px 16px;
+    border-radius: 50px;
+    background: #fff;
+    color: var(--escuro);
+    font-weight: 700;
+    text-decoration: none;
+}
+.btn-sair:hover { background: var(--dourado); }
+
+/* ---------- CAPA: título sobre a imagem ---------- */
+.capa {
+    min-height: 36vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: min(var(--largura-folha), 92%);
+    margin: 0 auto;
+    padding: 40px 0 78px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .55);
+}
+.capa-etiqueta {
+    margin: 0 0 6px;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dourado);
+}
+.capa-titulo {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+    line-height: 1.15;
+}
+
+/* ---------- FOLHA ---------- */
+.folha {
+    width: min(var(--largura-folha), 92%);
+    margin: -44px auto 56px;          /* o -44px faz a folha subir sobre a imagem */
+    padding: 38px 48px 0;
+    background: var(--folha);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+}
+
+.link-voltar { display: inline-block; margin-bottom: 18px; color: var(--suave); font-size: .95rem; text-decoration: none; }
+.link-voltar:hover { color: var(--texto); text-decoration: underline; }
+
+/* ---------- VÍDEO ---------- */
+.video-caixa {
+    aspect-ratio: 16 / 9;
+    margin-bottom: 28px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #111;
+}
+.video-caixa iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-vazio { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #bbb; }
+.video-vazio p { margin: 10px 0 0; }
+.video-play { font-size: 3rem; color: var(--dourado); }
+
+/* ---------- TEXTO DO MÓDULO ---------- */
+.texto-modulo { line-height: 1.75; }
+.texto-modulo p { margin: 0 0 1.1em; }
+.texto-modulo h2 { margin: 1.6em 0 .5em; font-family: 'Lora', serif; font-size: 1.5rem; }
+
+.texto-modulo blockquote { margin: 1.4em 0; padding: 16px 22px; border-left: 5px solid var(--dourado); background: #f3ecdc; border-radius: 0 10px 10px 0; }
+.texto-modulo blockquote p { margin: 0; }
+.texto-modulo blockquote cite { display: block; margin-top: 8px; font-style: normal; font-weight: 700; color: var(--suave); }
+.texto-modulo blockquote.destaque { font-size: 1.15rem; text-align: center; }
+
+/* ---------- FIM DA FOLHA (faixa escura) ---------- */
+.folha-fim {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 34px -48px 0;            /* os -48px fazem a faixa ocupar a largura toda da folha */
+    padding: 22px 48px;
+    background: var(--escuro);
+    color: #fff;
+    border-radius: 0 0 18px 18px;
+}
+
+.btn-principal {
+    padding: 13px 28px;
+    border: 0;
+    border-radius: 50px;
+    background: var(--dourado);
+    color: #2a1f00;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-principal:hover { filter: brightness(1.08); }
+.btn-principal:disabled { background: #5b6678; color: #aab; cursor: not-allowed; filter: none; }
+
+.btn-secundario {
+    padding: 11px 22px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+.btn-secundario:hover { border-color: var(--dourado); color: var(--dourado); }
+
+/* ---------- AVALIAÇÃO COM ESTRELAS ---------- */
+.form-avaliacao { display: flex; flex-direction: column; gap: 2px; }
+.avaliacao-titulo { font-size: .9rem; color: #cfd6e2; }
+.avaliacao-msg { min-height: 1.1em; font-size: .8rem; color: var(--dourado); }
+
+/* Truque: as estrelas estão no HTML de 5 até 1 e a linha é invertida (row-reverse).
+   Assim o CSS consegue pintar "a estrela marcada e todas as anteriores". */
+.estrelas { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; }
+.estrelas input { position: absolute; opacity: 0; pointer-events: none; }
+.estrelas label { font-size: 1.9rem; line-height: 1; padding: 0 2px; color: #4a5870; cursor: pointer; transition: color .15s; }
+.estrelas input:checked ~ label,
+.estrelas label:hover,
+.estrelas label:hover ~ label { color: var(--dourado); }
+
+/* ---------- ATIVIDADES ---------- */
+.atividades-intro { margin: 0 0 24px; color: var(--suave); }
+.aviso-atividades { padding: 10px 14px; background: #fff3cd; border-left: 5px solid #f59f00; border-radius: 6px; }
+
+.questao { margin-bottom: 30px; padding-bottom: 26px; border-bottom: 1px solid #e6dfd0; }
+.enunciado { margin: 0 0 14px; font-weight: 700; font-size: 1.1rem; line-height: 1.45; }
+.numero {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; margin-right: 6px;
+    border-radius: 50%; background: var(--escuro); color: #fff; font-size: .9rem;
+}
+
+.alt {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 8px; padding: 12px 14px;
+    background: #fff; border: 2px solid #e6dfd0; border-radius: 12px;
+    cursor: pointer; transition: border-color .15s, background .15s;
+}
+.alt:hover { border-color: var(--dourado); }
+.alt input { margin-top: 5px; accent-color: var(--escuro); }
+.letra { flex: 0 0 auto; font-weight: 700; color: var(--suave); }
+
+.questao.respondida .alt { cursor: default; }
+.alt-certa  { border-color: var(--certo); background: #e8f5e9; }
+.alt-errada { border-color: var(--errado); background: #fdecea; }
+
+.btn-conferir {
+    margin-top: 6px; padding: 10px 22px;
+    border: 0; border-radius: 50px;
+    background: var(--escuro); color: #fff; font: inherit; font-weight: 700; cursor: pointer;
+}
+.btn-conferir:hover { background: #1c3252; }
+.btn-conferir:disabled { opacity: .6; cursor: wait; }
+.btn-conferir[hidden] { display: none; }
+
+.feedback { margin-top: 14px; padding: 14px 18px; border-radius: 12px; line-height: 1.55; }
+.feedback[hidden] { display: none; }
+.feedback p { margin: 6px 0 0; }
+.feedback.certo  { background: #e8f5e9; border-left: 5px solid var(--certo); }
+.feedback.errado { background: #fdecea; border-left: 5px solid var(--errado); }
+.feedback.aviso  { background: #fff3cd; border-left: 5px solid #f59f00; }
+
+.concluir-area { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.contador { font-size: .9rem; color: #cfd6e2; }
+.concluir-area form { margin: 0; }
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 700px) {
+    body.pagina-modulo { background-attachment: scroll; }   /* "fixed" não funciona bem em celulares */
+    .barra-topo { grid-template-columns: auto 1fr auto; padding: 8px 14px; }
+    .barra-titulo { font-size: .85rem; }
+    .barra-nome { display: none; }
+    .folha { padding: 26px 22px 0; }
+    .folha-fim { margin: 28px -22px 0; padding: 20px 22px; }
+}

@@ -26,7 +26,7 @@ $nome_usuario = (string)$st->fetchColumn();
 <!-- BARRA SUPERIOR: logo | título do curso | usuário e Sair -->
 <header class="barra-topo">
     <a class="barra-logo" href="painel.php" title="Voltar aos módulos">
-        <img src="<?= BASE_URL ?>/assets/img/logoCamisaSalina.png" alt="Logo do curso">
+        <img src="<?= BASE_URL ?>/assets/img/logoIBNAPx.png" alt="Logo do curso">
     </a>
     <div class="barra-titulo"><?= NOME_CURSO ?></div>
     <div class="barra-usuario">

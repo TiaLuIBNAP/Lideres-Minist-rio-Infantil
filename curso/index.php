@@ -53,8 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="pagina-login">
   <main class="caixa-login">
     <h1>Acesse o curso</h1>
-
-    <?php if ($erro): ?>
+      <?php if ($erro): ?>
       <p class="erro"><?= $erro ?></p>
     <?php endif; ?>
 

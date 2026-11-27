@@ -4,13 +4,14 @@
    ===================================================================== */
 :root {
     --escuro: #0f1b2d;        /* barra superior e rodapé da folha */
-    --folha: #fbf8f2;         /* cor da folha */
+    --folha: #fbf8f2c7;         /* cor da folha */
     --dourado: #f2b632;       /* botões principais */
     --texto: #2d2a26;
     --suave: #6b665e;
     --certo: #2b8a3e;
     --errado: #c92a2a;
     --largura-folha: 860px;
+    
 }
 
 * { box-sizing: border-box; }
@@ -232,3 +233,7 @@ body.pagina-modulo {
     .folha { padding: 26px 22px 0; }
     .folha-fim { margin: 28px -22px 0; padding: 20px 22px; }
 }
+
+.texto-modulo ul { margin: 0 0 1.2em; padding-left: 1.3em; }
+.texto-modulo li { margin-bottom: .35em; }
+.texto-modulo blockquote.destaque strong { font-weight: 700;

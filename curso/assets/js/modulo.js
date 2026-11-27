@@ -42,8 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
         fb.hidden = false;
         fb.innerHTML = '';
         var titulo = document.createElement('strong');
+        // As alternativas são embaralhadas: a letra que o aluno vê (A, B, C, D) é a da posição na tela,
+        // não a do banco. Lemos a letra do rótulo da alternativa certa.
+        var rotuloCerto = form.querySelector('input[value="' + d.certa + '"]').parentNode.querySelector('.letra');
         titulo.textContent = d.acertou ? '✓ Resposta correta!'
-            : '✗ Não foi dessa vez. A resposta certa é a letra ' + d.certa + '.';
+            : '✗ Não foi dessa vez. A resposta certa é a letra ' + rotuloCerto.textContent + '.';
         var texto = document.createElement('p');
         texto.textContent = d.explicacao || '';
         fb.appendChild(titulo);

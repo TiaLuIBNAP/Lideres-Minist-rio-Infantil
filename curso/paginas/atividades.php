@@ -18,6 +18,9 @@ $st = $pdo->prepare("SELECT id, enunciado, alt_a, alt_b, alt_c, alt_d
 $st->execute([$modulo['id']]);
 $questoes = $st->fetchAll(PDO::FETCH_ASSOC);
 
+// EMBARALHAR: a cada vez que a página abre, as questões mudam de ordem
+shuffle($questoes);
+
 // 2) O que o aluno já respondeu (para reabrir a página já corrigida)
 $st = $pdo->prepare("SELECT q.id, r.escolhida, r.acertou, q.correta, q.explicacao
                        FROM respostas r
@@ -54,6 +57,13 @@ require __DIR__ . '/../includes/topo_modulo.php';
 
 <?php foreach ($questoes as $i => $q):
     $resp = $respondidas[(int)$q['id']] ?? null;   // null = ainda não respondeu
+
+    // EMBARALHAR as alternativas. $ordem guarda as letras ORIGINAIS (as do banco) em ordem sorteada.
+    // Na tela, a 1ª alternativa mostrada sempre se chama "A", a 2ª "B"... (letra de exibição),
+    // mas o valor enviado ao servidor continua sendo a letra original.
+    $colunas = ['A' => 'alt_a', 'B' => 'alt_b', 'C' => 'alt_c', 'D' => 'alt_d'];
+    $ordem   = array_keys($colunas);
+    shuffle($ordem);
 ?>
     <form class="questao <?= $resp ? 'respondida' : '' ?>" action="conferir.php" method="post">
         <?= csrf_campo() ?>
@@ -61,7 +71,8 @@ require __DIR__ . '/../includes/topo_modulo.php';
 
         <p class="enunciado"><span class="numero"><?= $i + 1 ?></span> <?= htmlspecialchars($q['enunciado']) ?></p>
 
-        <?php foreach (['A' => 'alt_a', 'B' => 'alt_b', 'C' => 'alt_c', 'D' => 'alt_d'] as $letra => $coluna):
+        <?php foreach ($ordem as $posicao => $letra):
+            $letra_tela = chr(65 + $posicao);          // 0->A, 1->B, 2->C, 3->D
             $classe = '';
             if ($resp) {
                 if ($letra === strtoupper(trim($resp['correta']))) $classe = 'alt-certa';
@@ -72,16 +83,19 @@ require __DIR__ . '/../includes/topo_modulo.php';
                 <input type="radio" name="resposta" value="<?= $letra ?>"
                        <?= $resp && $resp['escolhida'] === $letra ? 'checked' : '' ?>
                        <?= $resp ? 'disabled' : '' ?>>
-                <span class="letra"><?= $letra ?></span>
-                <span><?= htmlspecialchars($q[$coluna]) ?></span>
+                <span class="letra"><?= $letra_tela ?></span>
+                <span><?= htmlspecialchars($q[$colunas[$letra]]) ?></span>
             </label>
         <?php endforeach; ?>
 
         <button type="submit" class="btn-conferir" <?= $resp ? 'hidden' : '' ?>>Conferir resposta</button>
 
         <div class="feedback <?= $resp ? ($resp['acertou'] ? 'certo' : 'errado') : '' ?>" <?= $resp ? '' : 'hidden' ?>>
-            <?php if ($resp): ?>
-                <strong><?= $resp['acertou'] ? '✓ Resposta correta!' : '✗ Não foi dessa vez. A resposta certa é a letra ' . htmlspecialchars(strtoupper(trim($resp['correta']))) . '.' ?></strong>
+            <?php if ($resp):
+                // letra que a alternativa certa tem NESTA abertura da página
+                $letra_certa_tela = chr(65 + array_search(strtoupper(trim($resp['correta'])), $ordem, true));
+            ?>
+                <strong><?= $resp['acertou'] ? '✓ Resposta correta!' : '✗ Não foi dessa vez. A resposta certa é a letra ' . $letra_certa_tela . '.' ?></strong>
                 <p><?= htmlspecialchars($resp['explicacao'] ?? '') ?></p>
             <?php endif; ?>
         </div>
